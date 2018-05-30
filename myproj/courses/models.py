@@ -5,22 +5,24 @@ from django.contrib.auth.models import User
 
 class Course(models.Model):
 
-    course_code = models.CharField(max_length=10, unique=True)
+    course_code = models.CharField(max_length=10)
     course_name = models.CharField(max_length=100)
-
+    starter = models.ForeignKey(User, related_name='created_by',on_delete = models.SET('deleted'),blank=True)
 
     def __str__(self):
 
         return "Code: "+ self.course_code +" : Course Name: "+self.course_name
 
 
+
 class CourseWork(models.Model):
+
 
     name_course_work = models.CharField(max_length=50)
     weight = models.FloatField()
     grade = models.FloatField()
     course = models.ForeignKey(Course, related_name='course_work', on_delete = models.SET('deleted'))
-    starter = models.ForeignKey(User, related_name='course_work',on_delete = models.SET('deleted'))
+
 
     def __str__(self):
 
