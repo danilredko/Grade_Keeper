@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path, re_path
 
 from courses import views
+from accounts import views as accounts_views
+
 
 
 urlpatterns = [
@@ -24,4 +26,6 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('courses/<int:pk>/', views.courses_page, name='courses_page'),
     path('courses/<int:pk>/new/', views.new_coursework, name='new_coursework')
+    path('signup', accounts_views.signup, name='signup')
+
 ]

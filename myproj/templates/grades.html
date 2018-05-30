@@ -10,5 +10,31 @@
 {% endblock %}
 
 {% block content %}
-    <!-- just leaving it empty for now. we will add core here soon. -->
+
+
+{% for grade in grades %}
+
+<hb>
+<p>
+<span>|   Name:    </span>
+<span> {{grade.name_course_work}}</span>
+<span>|   Grade:   </span>
+<span>{{ grade.grade }}</span>
+<span>|   Weight:  </span>
+<span>{{ grade.weight }}</span>
+<hb>
+</p>
+{%endfor%}
+
+
+
+<form method="post">
+  {% csrf_token %}
+
+  <input type="text" name="assignment">
+  <input type="number" name="grade1">
+  <input type="number" name="weight">
+
+  <button type="submit" class="btn btn-success">Add</button>
+
 {% endblock %}
