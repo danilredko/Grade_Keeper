@@ -19,7 +19,6 @@ def home(request):
         course_code = request.POST['course_code']
         course_name = request.POST.get('course_name')
 
-
         course = Course.objects.create(course_code=course_code, course_name = course_name, starter=user)
 
         #user.created_by.add(course)
