@@ -4,42 +4,35 @@
 {% block content %}
 
 
+<div class='container'>
 
-<link rel='stylesheet' href="static/css/courses.css">
+  <div class="table-responsive">
+    <table class="table" id="course_table">
 
-<div class='container-fluid'>
-<!-- <style>
-  .row div{padding: 20px 10px; border: 1px solid;}
-</style> -->
-<div class="table-responsive">
-<table class="table" id="course_table">
+          <tr class="table_header bg-primary text-white">
+            <th>Course</th>
+            <th>Average</th>
+          </tr>
+          {% for course in courses %}
+          <tr class ='table_rows'>
+            <td> <a href="{% url 'courses_page' course.pk %}">{{ course.course_code }}</a></td>
+            <td>0</td>
+          </tr>
+          {% endfor %}
 
-      <tr class="table_header">
-        <th>Course</th>
-        <th>Average</th>
-      </tr>
-
-
-      {% for course in courses %}
-      <tr class ='table_rows'>
-        <td> <a href="{% url 'courses_page' course.pk %}">{{ course.course_code }}</a></td>
-        <<td>0</td>
-
-      </tr>
-
-      {% endfor %}
+    </table>
   </div>
-</table>
 </div>
 
-<div class="container-fluid">
+<div class="container">
 
-    <form method="post">
+    <form method="post" class = 'form-inline'>
       {% csrf_token %}
       <div class='row'>
-      <div class = "col-sm-4"><input type="text" name="course_code" placeholder='Course Code'></div>
-      <div class = "col-sm-4"><input type="text" name="course_name" placeholder='Course Description'></div>
-      <div class = "col-sm-4"><button type="submit">Add Course</button></div>
+      <label for="coursecode" class="sr-only">Password</label>
+      <div class = "col-sm-4"><input type="text" required="required" name="course_code" placeholder='Course Code' class="form-control" id="corsecode"></div>
+      <div class = "col-sm-4"><input type="text" required="required" name="course_name" placeholder='Course Description' class="form-control" id="corsecode" ></div>
+      <div class = "col-sm-4"><button type="submit" required="required" class="btn btn-primary mb-2">Add Course</button></div>
       </div>
     </form>
 

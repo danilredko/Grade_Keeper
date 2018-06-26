@@ -1,40 +1,49 @@
 {% extends 'base.html' %}
 
-{% block title %}
-  {{ course.course_code }} - {{ block.super }}
-{% endblock %}
-
-{% block breadcrumb %}
-  <li class="breadcrumb-item"><a href="{% url 'home' %}">Courses</a></li>
-  <li class="breadcrumb-item active">{{ course.course_code }}</li>
-{% endblock %}
 
 {% block content %}
 
+<div class='container'>
 
-{% for grade in grades %}
+  <div class="table-responsive">
+    <table class="table" id="course_table">
 
-<hb>
-<p>
-<span>|   Name:    </span>
-<span> {{grade.name_course_work}}</span>
-<span>|   Grade:   </span>
-<span>{{ grade.grade }}</span>
-<span>|   Weight:  </span>
-<span>{{ grade.weight }}</span>
-<hb>
-</p>
-{%endfor%}
+          <tr class="table_header bg-primary text-white">
+            <th>Name Course Work</th>
+            <th>Points</th>
+            <th>Out of</th>
+            <th>Weight</th>
+
+          </tr>
+          {% for grade in grades %}
+          <tr class ='table_rows'>
+            <td>{{ grade.name_course_work }}</td>
+            <td>{{ grade.grade }}</td>
+            <td>{{ grade.weight }}</td>
+            <td>{{ grade.course}} </td>
+            <th><button class='btn btn-danger'>Delete</button></th>
+          </tr>
+          {% endfor %}
+
+    </table>
+  </div>
+</div>
 
 
+<div class="container">
 
-<form method="post">
-  {% csrf_token %}
+    <form method="post" class = 'form-inline'>
+      {% csrf_token %}
+      <div class='row'>
+      <label for="coursecode" class="sr-only">Password</label>
+      <div class = "col-sm"><input type="text" required="required" name="assignment" placeholder='Course Work' class="form-control" id="corsecode"></div>
+      <div class = "col-sm"><input type="number" step="0.01" name="assignment1" placeholder='Points' class="form-control" id="corsecode"></div>
+      <div class = "col-sm"><input type="number" step="0.01" required="required" name="grade1" placeholder='Out Of' class="form-control" id="corsecode" ></div>
+      <div class = "col-sm"><input type="number" step="0.01" required="required" name="weight" placeholder='Weight' class="form-control" id="corsecode" ></div>
+      <div class = "col-sm"><button type="submit" required="required" class="btn btn-primary mb-2">Add Course Work</button></div>
+      </div>
+    </form>
 
-  <input type="text" name="assignment">
-  <input type="number" name="grade1">
-  <input type="number" name="weight">
-
-  <button type="submit" class="btn btn-success">Add</button>
+</div>
 
 {% endblock %}

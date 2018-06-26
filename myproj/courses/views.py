@@ -3,6 +3,7 @@ from django.http import HttpResponse, Http404
 from .models import Course, CourseWork
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.views.generic.edit import DeleteView
 
 # Create your views here.
 
@@ -25,7 +26,6 @@ def home(request):
 
 
     return render(request, 'home.html', {'courses': courses})
-
 
 
 def courses_page(request, pk):
@@ -55,3 +55,19 @@ def new_coursework(request, pk):
     course = get_object_or_404(Course, pk=pk)
 
     return render(request, 'new_coursework.html', {'course': course})
+
+
+def delete_coursework(request, pk):
+
+    grade = get_object_or_404(CourseWork, pk=pk)
+
+    try:
+
+        if request.method == 'POST':
+            grade.delete()
+
+    except Exception as e:
+        print(e)
+
+
+    return render(request, 'course_work_check_delete.html',{'grades':grades})
