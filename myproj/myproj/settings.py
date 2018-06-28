@@ -25,7 +25,7 @@ SECRET_KEY = '6g4v2-$^w)cl(8xa)!$eo=d#e8hktxg^@t=ba#6^&=eql@jew2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.0.13','127.0.0.1']
 
 
 # Application definition
@@ -127,4 +127,4 @@ STATICFILES_DIRS = [
 ]
 
 LOGOUT_REDIRECT_URL = 'home'
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'course_list'

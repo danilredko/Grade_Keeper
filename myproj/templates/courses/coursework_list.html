@@ -13,15 +13,20 @@
             <th>Points</th>
             <th>Out of</th>
             <th>Weight</th>
+            <th></th>
 
           </tr>
-          {% for grade in grades %}
+          {% for grade in coursework_list %}
           <tr class ='table_rows'>
-            <td>{{ grade.name_course_work }}</td>
-            <td>{{ grade.grade }}</td>
-            <td>{{ grade.weight }}</td>
-            <td>{{ grade.course}} </td>
-            <th><button class='btn btn-danger'>Delete</button></th>
+            <form method="post">
+            {% csrf_token %}
+              <td>{{ grade.name_course_work }}</td>
+              <td>{{ grade.grade }}</td>
+              <td>{{ grade.weight }}</td>
+              <td>{{ grade.course}} </td>
+              <th><button class = 'btn btn-danger'>Delete</button>
+            </form>
+          </th>
           </tr>
           {% endfor %}
 

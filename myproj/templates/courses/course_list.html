@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<div class='container'>
+
+  <div class="table-responsive">
+    <table class="table" id="course_table">
+
+          <tr class="table_header bg-primary text-white">
+            <th>Course</th>
+            <th>Average</th>
+            
+          </tr>
+          {% for course in course_list %}
+          <tr class ='table_rows'>
+            <td> <a href="{% url 'coursework_list' course.pk %}">{{ course.course_code }}</a></td>
+            <td>0</td>
+            <td>
+              <a href="{% url 'edit_course_form' course.pk%}"><button type="submit" class="btn btn-primary mb-2">Edit Course</button></a>
+              <a href="{% url 'delete_course_form' course.pk%}"><button type="submit" class="btn btn-danger mb-2">Delete Course</button></a>
+            </td>
+
+          </tr>
+          {% endfor %}
+
+    </table>
+  </div>
+</div>
+
+<div class="container">
+
+      <div class = "col-sm-4"><a href="{% url 'course_form' %}"><button type="submit" required="required" class="btn btn-primary mb-2">Add Course</button></a></div>
+
+
+</div>
+{% endblock %}

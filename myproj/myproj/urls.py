@@ -23,10 +23,14 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
+    path('', views.home , name='home'),
+    path('courses/', views.CourseView.as_view() , name='course_list'),
+    path('courses/add_course', views.CreateCourseView.as_view() , name='course_form'),
+    path('courses/edit_course/<int:pk>', views.UpdateCourseView.as_view() , name='edit_course_form'),
+    path('courses/delete_course/<int:pk>', views.DeleteCourseView.as_view() , name='delete_course_form'),
+    
     path('login', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
-    path('courses/<int:pk>/', views.courses_page, name='courses_page'),
-    path('courses/<int:pk>/new/', views.new_coursework, name='new_coursework'),
+    path('courses/<int:pk>', views.CourseWorkView.as_view(), name='coursework_list'),
     path('signup', accounts_views.signup, name='signup'),
     path('logout', auth_views.LogoutView.as_view(), name = 'logout')
 

@@ -26,4 +26,4 @@ class CourseWork(models.Model):
 
     def __str__(self):
 
-        return "Name of work: "+self.name_course_work +" \n weight: "+str(self.weight) + " \ngrade: "+ str(self.grade) + "\n " + "course:"+ str(self.course) + "\n starter: "+str(self.starter)
+        return "Name of work: "+self.name_course_work +" \n weight: "+str(self.weight) + " \ngrade: "+ str(self.grade) + "\n " + "course:"+ str(self.course)
